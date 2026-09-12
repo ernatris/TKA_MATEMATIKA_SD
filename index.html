@@ -1,0 +1,89 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Rangkuman Materi TKA Matematika SD</title>
+<link rel="stylesheet" href="style.css">
+</head>
+<body>
+<div class="wrap">
+
+  <!-- ============ SCREEN 0: COVER / IDENTITAS ============ -->
+  <div id="screen-cover">
+    <div class="cover">
+      <span class="badge">📘 RANGKUMAN MATERI</span>
+      <h1>Tes Kemampuan Akademik (TKA)</h1>
+      <p class="subtitle">Materi Pembelajaran Interaktif Matematika SD</p>
+      <div class="credit">Disusun oleh <b>Erna Trisnawati, S.Pd.I</b><br>SDN 3 Cileuleuy</div>
+    </div>
+    <div class="form-card">
+      <div style="font-weight:800;font-size:15.5px;">Identitas Siswa</div>
+      <div style="font-size:12.5px;color:var(--sub);margin-top:2px;">Isi data berikut sebelum mulai belajar</div>
+      <label for="inp-nama">Nama Lengkap</label>
+      <input id="inp-nama" type="text" placeholder="Tulis nama lengkapmu">
+      <label for="inp-kelas">Kelas</label>
+      <select id="inp-kelas">
+        <option value="">Pilih kelas</option>
+        <option>IV</option><option>V</option><option>VI</option>
+      </select>
+      <div class="err" id="form-err">Nama dan kelas wajib diisi terlebih dahulu.</div>
+      <button class="btn-main" onclick="startApp()">Mulai Belajar →</button>
+    </div>
+  </div>
+
+  <!-- ============ SCREEN 1: HOME / DAFTAR MATERI ============ -->
+  <div id="screen-home" class="hide">
+    <div class="topbar">
+      <div class="who">Siswa: <b id="home-nama"></b> · Kelas <b id="home-kelas"></b></div>
+      <div class="progress-pill" id="home-progress">0/21 selesai</div>
+    </div>
+    <div class="section-title">Daftar Materi Kisi-Kisi</div>
+    <div class="section-sub">21 Topik · Ketuk salah satu materi untuk mulai belajar</div>
+    <div class="recap-bar" onclick="openRecap()">
+      <div class="l">Lihat Rekap Nilai Semua Materi<small>Ringkasan hasil kuis kamu</small></div>
+      <div class="chev" style="color:#fff;">›</div>
+    </div>
+    <div class="topic-list" id="topic-list"></div>
+    <div class="foot-note">Rangkuman Materi TKA Matematika SD · Erna Trisnawati, S.Pd.I · SDN 3 Cileuleuy</div>
+  </div>
+
+  <!-- ============ SCREEN 2: TOPIC DETAIL ============ -->
+  <div id="screen-topic" class="hide">
+    <div class="topic-header" id="topic-header">
+      <button class="backbtn" onclick="backToHome()">← Kembali</button>
+      <h2 id="topic-title"></h2>
+      <p id="topic-sub"></p>
+    </div>
+    <div style="padding:0 14px;">
+      <div class="tabs">
+        <button class="tab-btn active" id="tab-materi-btn" onclick="showTab('materi')">📖 Materi</button>
+        <button class="tab-btn" id="tab-kuis-btn" onclick="showTab('kuis')">✏️ Kuis (10 soal)</button>
+      </div>
+      <div class="tab-panel materi" id="panel-materi"></div>
+      <div class="tab-panel hide" id="panel-kuis"></div>
+    </div>
+  </div>
+
+  <!-- ============ SCREEN 3: RECAP ============ -->
+  <div id="screen-recap" class="hide">
+    <div class="topic-header" style="background:linear-gradient(160deg,#111827,#374151);">
+      <button class="backbtn" onclick="backToHome()">← Kembali</button>
+      <h2>Rekap Nilai</h2>
+      <p id="recap-sub">Hasil kuis seluruh materi</p>
+    </div>
+    <div style="padding:16px;background:#fff;margin:0 14px 20px;border-radius:16px;box-shadow:0 6px 20px rgba(20,30,60,.06);">
+      <table class="recap-table">
+        <thead><tr><th>#</th><th>Materi</th><th style="text-align:center;">Nilai</th></tr></thead>
+        <tbody id="recap-body"></tbody>
+      </table>
+    </div>
+    <button class="print-btn" onclick="window.print()">🖨️ Cetak Rekap Nilai</button>
+  </div>
+
+</div>
+
+<script src="script.js"></script>
+</body>
+</html>
+
